@@ -105,6 +105,27 @@
             margin: 10px 0;
         }
         
+        .success-message {
+            background-color: rgba(76, 175, 80, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .success-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4caf50;
+            margin-bottom: 10px;
+        }
+        
+        .success-text {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
         .payment-info {
             background-color: rgba(0, 0, 0, 0.4);
             padding: 15px;
@@ -113,110 +134,49 @@
             transition: all 0.3s ease;
         }
         
-        .total-fine {
+        .payment-status {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #ffd700;
+            color: #4caf50;
             text-align: center;
             margin: 15px 0;
         }
         
-        .payment-code-container {
+        .payment-details {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 12px;
-            border-radius: 8px;
-            margin: 15px 0;
+            margin: 10px 0;
         }
         
-        .payment-code {
-            font-family: monospace;
-            font-size: 1.1rem;
+        .payment-amount {
+            font-size: 1.2rem;
             font-weight: bold;
-            letter-spacing: 1px;
+            color: #ffd700;
+            text-align: right;
         }
         
-        .copy-btn {
-            background-color: #ffd700;
-            color: #003366;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
+        .agency-info {
+            background-color: rgba(76, 175, 80, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .agency-title {
+            font-weight: bold;
+            color: #4caf50;
+            margin-bottom: 8px;
+        }
+        
+        .agency-email {
+            color: #a5d6a7;
+            text-decoration: underline;
             cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
         }
         
-        .copy-btn:hover {
-            background-color: #ffed4e;
-        }
-        
-        .countdown-container {
-            text-align: center;
-            margin: 20px 0;
-            padding: 15px;
-            background-color: rgba(255, 165, 0, 0.2);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .countdown-title {
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        
-        .countdown-timer {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ff9800;
-            font-family: monospace;
-        }
-        
-        .warning {
-            background-color: rgba(255, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border-left: 4px solid #ff6b6b;
-        }
-        
-        .warning-title {
-            font-weight: bold;
-            color: #ff6b6b;
-            margin-bottom: 8px;
-        }
-        
-        .security-note {
-            background-color: rgba(0, 100, 200, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border-left: 4px solid #4dabf7;
-        }
-        
-        .security-title {
-            font-weight: bold;
-            color: #4dabf7;
-            margin-bottom: 8px;
-        }
-        
-        .expired {
-            background-color: rgba(255, 0, 0, 0.3);
-            color: #ff6b6b;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: bold;
-            display: none;
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
+        .agency-email:hover {
+            color: #c8e6c9;
         }
         
         .requirements {
@@ -251,28 +211,47 @@
             left: 0;
         }
         
-        .agency-info {
-            background-color: rgba(76, 175, 80, 0.2);
+        .security-note {
+            background-color: rgba(0, 100, 200, 0.2);
             padding: 15px;
             border-radius: 10px;
-            margin: 20px 0;
-            border-left: 4px solid #4caf50;
+            margin-top: 20px;
+            border-left: 4px solid #4dabf7;
         }
         
-        .agency-title {
+        .security-title {
             font-weight: bold;
-            color: #4caf50;
+            color: #4dabf7;
             margin-bottom: 8px;
         }
         
-        .agency-email {
-            color: #a5d6a7;
-            text-decoration: underline;
-            cursor: pointer;
+        .download-container {
+            text-align: center;
+            margin: 25px 0;
         }
         
-        .agency-email:hover {
-            color: #c8e6c9;
+        .download-btn {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .download-btn:hover {
+            background-color: #45a049;
+        }
+        
+        .download-icon {
+            width: 20px;
+            height: 20px;
         }
         
         @media (max-width: 600px) {
@@ -296,13 +275,17 @@
                 width: 100%;
             }
             
-            .payment-code-container {
-                flex-direction: column;
-                gap: 10px;
+            .success-title {
+                font-size: 1.3rem;
             }
             
-            .countdown-timer {
-                font-size: 1.5rem;
+            .payment-details {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .payment-amount {
+                text-align: left;
             }
         }
     </style>
@@ -323,7 +306,7 @@
             </div>
             <div class="data-row">
                 <div class="data-label">NIK:</div>
-                <div class="data-value">3175090407950003</div>
+                <div class="data-value">31750904079500033</div>
             </div>
             <div class="data-row">
                 <div class="data-label">Tempat, Tgl Lahir:</div>
@@ -338,6 +321,14 @@
                 <div class="section-title">Jadwal Kedatangan</div>
                 <div class="schedule-date">Kamis, 20 November 2025</div>
                 <div class="schedule-time">10:30 - 11:00 WIB</div>
+            </div>
+            
+            <div class="success-message">
+                <div class="success-title">BERHASIL MENYELESAIKAN PEMBAYARAN!</div>
+                <div class="success-text">
+                    Terima kasih, pembayaran Anda telah berhasil diproses.<br>
+                    Silakan datang sesuai jadwal yang telah ditentukan dengan membawa kelengkapan dokumen.
+                </div>
             </div>
             
             <div class="agency-info">
@@ -356,75 +347,63 @@
                 </div>
             </div>
             
-            <div class="payment-info" id="paymentInfo">
+            <div class="payment-info">
                 <div class="section-title">Informasi Pembayaran</div>
-                <div class="total-fine">Rp 653.500,00</div>
+                <div class="payment-status">LUNAS</div>
                 
-                <div class="payment-code-container">
-                    <div class="payment-code" id="paymentCode">910266000000897543</div>
-                    <button class="copy-btn" id="copyBtn">Salin</button>
+                <div class="payment-details">
+                    <div class="data-label">Nomor Pembayaran:</div>
+                    <div class="data-value">910266000000895870</div>
+                </div>
+                
+                <div class="payment-details">
+                    <div class="data-label">Jumlah Pembayaran:</div>
+                    <div class="payment-amount">Rp 653.500,00</div>
+                </div>
+                
+                <div class="payment-details">
+                    <div class="data-label">Tanggal Pembayaran:</div>
+                    <div class="data-value" id="paymentDate"></div>
                 </div>
             </div>
             
-            <div class="countdown-container" id="countdownContainer">
-                <div class="countdown-title">Batas Waktu Pembayaran</div>
-                <div class="countdown-timer" id="countdown">02:00:00</div>
-            </div>
-            
-            <div class="expired" id="expiredMessage">
-                WAKTU PEMBAYARAN HABIS!<br>
-                Permohonan Anda telah ditolak oleh sistem.<br>
-                Silakan tunggu 3 bulan untuk melakukan pendaftaran kembali.
-            </div>
-            
             <div class="requirements">
-                <div class="requirements-title">Persyaratan dan Ketentuan:</div>
+                <div class="requirements-title">Persyaratan Kedatangan:</div>
                 <ul class="requirements-list">
                     <li>Pemohon wajib hadir 15 menit sebelum jam kedatangan dimulai</li>
                     <li>Membawa dokumen persyaratan permohonan paspor asli sesuai tujuan permohonan</li>
                     <li>Membawa KTP asli dan fotokopi</li>
                     <li>Membawa KK asli dan fotokopi</li>
                     <li>Membawa paspor lama (jika ada)</li>
-                    <li>Apabila tidak hadir sesuai jadwal, permohonan dapat dibatalkan</li>
+                    <li>Membawa bukti pembayaran ini</li>
                 </ul>
-            </div>
-            
-            <div class="warning">
-                <div class="warning-title">Peringatan:</div>
-                <p>Apabila pembayaran dilakukan diluar batas waktu yang sudah ditentukan, maka permohonan akan otomatis ditolak oleh sistem dan Anda wajib menunggu 3 bulan mendatang untuk melakukan pendaftaran kembali.</p>
             </div>
             
             <div class="security-note">
                 <div class="security-title">Catatan Keamanan:</div>
                 <p>Harap data diri dan kode permohonan jangan diberikan kepada siapapun untuk menjaga keamanan data Anda.</p>
             </div>
+            
+            <div class="download-container">
+                <button class="download-btn" id="downloadBtn">
+                    <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Unduh Bukti Pembayaran
+                </button>
+            </div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Fungsi untuk menyalin kode pembayaran
-            const copyBtn = document.getElementById('copyBtn');
-            const paymentCode = document.getElementById('paymentCode');
-            
-            copyBtn.addEventListener('click', function() {
-                navigator.clipboard.writeText(paymentCode.textContent)
-                    .then(() => {
-                        const originalText = copyBtn.textContent;
-                        copyBtn.textContent = 'Tersalin!';
-                        copyBtn.style.backgroundColor = '#4caf50';
-                        copyBtn.style.color = 'white';
-                        
-                        setTimeout(() => {
-                            copyBtn.textContent = originalText;
-                            copyBtn.style.backgroundColor = '#ffd700';
-                            copyBtn.style.color = '#003366';
-                        }, 2000);
-                    })
-                    .catch(err => {
-                        console.error('Gagal menyalin kode: ', err);
-                    });
-            });
+            // Set tanggal pembayaran hari ini
+            const paymentDateElement = document.getElementById('paymentDate');
+            const today = new Date();
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            paymentDateElement.textContent = today.toLocaleDateString('id-ID', options);
             
             // Fungsi untuk membuka email client
             const agencyEmail = document.getElementById('agencyEmail');
@@ -432,71 +411,89 @@
                 window.location.href = 'mailto:agencyerik@jakarta.com';
             });
             
-            // Fungsi countdown timer
-            const countdownElement = document.getElementById('countdown');
-            const expiredMessage = document.getElementById('expiredMessage');
-            const paymentInfo = document.getElementById('paymentInfo');
-            const countdownContainer = document.getElementById('countdownContainer');
+            // Fungsi untuk mengunduh bukti pembayaran
+            const downloadBtn = document.getElementById('downloadBtn');
             
-            // Durasi countdown dalam milidetik (2 jam)
-            const duration = 2 * 60 * 60 * 1000; // 2 jam dalam milidetik
-            
-            // Cek apakah sudah ada waktu tersimpan di localStorage
-            let startTime = localStorage.getItem('paymentStartTime');
-            let endTime = localStorage.getItem('paymentEndTime');
-            let currentTime = Date.now();
-            
-            // Jika belum ada startTime atau endTime, atau sudah expired, set baru
-            if (!startTime || !endTime || parseInt(endTime) <= currentTime) {
-                startTime = currentTime;
-                endTime = startTime + duration;
-                localStorage.setItem('paymentStartTime', startTime);
-                localStorage.setItem('paymentEndTime', endTime);
+            downloadBtn.addEventListener('click', function() {
+                // Membuat konten untuk file bukti pembayaran
+                const receiptContent = `
+BUKTI PEMBAYARAN PERMOHONAN PASPOR
+=====================================
+
+KANTOR IMIGRASI KELAS I TPI JAKARTA PUSAT
+Jl. K.S. Tubun No. 3, Petamburan, Tanah Abang, Jakarta Pusat, DKI Jakarta 10260
+
+DATA PEMOHON:
+-----------
+Nama: ROBBY SETIAWAN
+NIK: 31750904079500033
+Tempat, Tanggal Lahir: JAKARTA, 04-07-1995
+Jenis Layanan: Permohonan Paspor Baru Elektronik 5 Tahun
+
+JADWAL KEDATANGAN:
+----------------
+Hari: Kamis
+Tanggal: 20 November 2025
+Jam: 10:30 - 11:00 WIB
+
+INFORMASI AGENCY:
+----------------
+Nama Agency: Erick Abdulah SM Sh.
+Email: agencyerik@jakarta.com
+Metode Pembayaran: Via Agency
+
+INFORMASI PEMBAYARAN:
+------------------
+Status: LUNAS
+Nomor Pembayaran: 910266000000895870
+Jumlah Pembayaran: Rp 653.500,00
+Tanggal Pembayaran: ${today.toLocaleDateString('id-ID')}
+
+PERSYARATAN KEDATANGAN:
+----------------------
+- Pemohon wajib hadir 15 menit sebelum jam kedatangan dimulai
+- Membawa dokumen persyaratan permohonan paspor asli sesuai tujuan permohonan
+- Membawa KTP asli dan fotokopi
+- Membawa KK asli dan fotokopi
+- Membawa paspor lama (jika ada)
+- Membawa bukti pembayaran ini
+
+Terima kasih telah melakukan pembayaran permohonan paspor.
+Silahkan datang tepat waktu sesuai jadwal yang telah ditentukan.
+                `;
                 
-                // Reset tampilan jika sebelumnya expired
-                expiredMessage.style.display = 'none';
-                paymentInfo.style.opacity = '1';
-                paymentInfo.style.pointerEvents = 'auto';
-                countdownContainer.style.display = 'block';
-            }
-            
-            // Konversi ke integer
-            startTime = parseInt(startTime);
-            endTime = parseInt(endTime);
-            
-            function updateCountdown() {
-                currentTime = Date.now();
-                const remainingTime = endTime - currentTime;
+                // Membuat blob dari konten
+                const blob = new Blob([receiptContent], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
                 
-                if (remainingTime <= 0) {
-                    // Waktu habis
-                    countdownElement.textContent = '00:00:00';
-                    expiredMessage.style.display = 'block';
-                    paymentInfo.style.opacity = '0.5';
-                    paymentInfo.style.pointerEvents = 'none';
-                    countdownContainer.style.display = 'none';
-                    return;
-                }
+                // Membuat elemen anchor untuk mengunduh
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Bukti_Pembayaran_Paspor_ROBBY_SETIAWAN.txt';
+                document.body.appendChild(a);
+                a.click();
                 
-                // Menghitung jam, menit, dan detik
-                const hours = Math.floor(remainingTime / (1000 * 60 * 60));
-                const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+                // Membersihkan
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 100);
                 
-                // Format tampilan timer
-                const formattedTime = 
-                    String(hours).padStart(2, '0') + ':' +
-                    String(minutes).padStart(2, '0') + ':' +
-                    String(seconds).padStart(2, '0');
+                // Memberi feedback visual
+                const originalText = downloadBtn.innerHTML;
+                downloadBtn.innerHTML = `
+                    <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Tersimpan
+                `;
+                downloadBtn.style.backgroundColor = '#45a049';
                 
-                countdownElement.textContent = formattedTime;
-                
-                // Update setiap detik
-                setTimeout(updateCountdown, 1000);
-            }
-            
-            // Memulai countdown
-            updateCountdown();
+                setTimeout(() => {
+                    downloadBtn.innerHTML = originalText;
+                    downloadBtn.style.backgroundColor = '#4caf50';
+                }, 2000);
+            });
         });
     </script>
 </body>
