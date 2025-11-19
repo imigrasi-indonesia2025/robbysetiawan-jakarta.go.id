@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran Permohonan Paspor Baru</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+        
+        .popup-container {
+            width: 100%;
+            max-width: 500px;
+            background: linear-gradient(135deg, #002855 0%, #004d99 50%, #0066cc 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+        
+        .popup-header {
+            background-color: rgba(0, 20, 60, 0.9);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo {
+            max-height: 80px;
+            margin-bottom: 15px;
+        }
+        
+        .office-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .office-address {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .popup-content {
+            padding: 25px;
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ffd700;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 8px;
+        }
+        
+        .data-row {
+            display: flex;
+            margin-bottom: 12px;
+        }
+        
+        .data-label {
+            width: 40%;
+            font-weight: bold;
+        }
+        
+        .data-value {
+            width: 60%;
+        }
+        
+        .schedule-info {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .schedule-date {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .schedule-time {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4caf50;
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .payment-info {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .total-fine {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .payment-code-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .payment-code {
+            font-family: monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .copy-btn {
+            background-color: #ffd700;
+            color: #003366;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: #ffed4e;
+        }
+        
+        .countdown-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: rgba(255, 165, 0, 0.2);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .countdown-title {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .countdown-timer {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff9800;
+            font-family: monospace;
+        }
+        
+        .warning {
+            background-color: rgba(255, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .warning-title {
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 8px;
+        }
+        
+        .security-note {
+            background-color: rgba(0, 100, 200, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid #4dabf7;
+        }
+        
+        .security-title {
+            font-weight: bold;
+            color: #4dabf7;
+            margin-bottom: 8px;
+        }
+        
+        .expired {
+            background-color: rgba(255, 0, 0, 0.3);
+            color: #ff6b6b;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        
+        .requirements {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .requirements-title {
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        
+        .requirements-list {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+        
+        .requirements-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .requirements-list li:before {
+            content: "•";
+            color: #ffd700;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .agency-info {
+            background-color: rgba(76, 175, 80, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .agency-title {
+            font-weight: bold;
+            color: #4caf50;
+            margin-bottom: 8px;
+        }
+        
+        .agency-email {
+            color: #a5d6a7;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        .agency-email:hover {
+            color: #c8e6c9;
+        }
+        
+        @media (max-width: 600px) {
+            .popup-container {
+                max-width: 100%;
+            }
+            
+            .office-name {
+                font-size: 1.2rem;
+            }
+            
+            .office-address {
+                font-size: 0.8rem;
+            }
+            
+            .data-row {
+                flex-direction: column;
+            }
+            
+            .data-label, .data-value {
+                width: 100%;
+            }
+            
+            .payment-code-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .countdown-timer {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="popup-container">
+        <div class="popup-header">
+            <img src="https://z-cdn-media.chatglm.cn/files/491f1538-3b7f-44ef-9933-41fbe2e14de9_1c4gdnjq9c48qzq.jpeg?auth_key=1791605121-9be911d8006e4ea3891adbca7acfdca7-0-f064d5f9c818b4886157bcccb793ba09" alt="Logo Imigrasi" class="logo">
+            <div class="office-name">KANTOR IMIGRASI KELAS I TPI JAKARTA PUSAT</div>
+            <div class="office-address">Jl. K.S. Tubun No. 3, Petamburan, Tanah Abang, Jakarta Pusat, DKI Jakarta 10260</div>
+        </div>
+        
+        <div class="popup-content">
+            <div class="section-title">Data Pemohon</div>
+            <div class="data-row">
+                <div class="data-label">Nama:</div>
+                <div class="data-value">ROBBY SETIAWAN</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">NIK:</div>
+                <div class="data-value">31750904079500033</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Tempat, Tgl Lahir:</div>
+                <div class="data-value">JAKARTA, 04-07-1995</div>
+            </div>
+            <div class="data-row">
+                <div class="data-label">Jenis Layanan:</div>
+                <div class="data-value">Permohonan Paspor Baru Elektronik 5 Tahun</div>
+            </div>
+            
+            <div class="schedule-info">
+                <div class="section-title">Jadwal Kedatangan</div>
+                <div class="schedule-date">Kamis, 20 November 2025</div>
+                <div class="schedule-time">10:30 - 11:00 WIB</div>
+            </div>
+            
+            <div class="agency-info">
+                <div class="agency-title">Informasi Agency</div>
+                <div class="data-row">
+                    <div class="data-label">Nama Agency:</div>
+                    <div class="data-value">Erick Abdulah SM Sh.</div>
+                </div>
+                <div class="data-row">
+                    <div class="data-label">Email Agency:</div>
+                    <div class="data-value agency-email" id="agencyEmail">agencyerik@jakarta.com</div>
+                </div>
+                <div class="data-row">
+                    <div class="data-label">Metode Pembayaran:</div>
+                    <div class="data-value">Via Agency</div>
+                </div>
+            </div>
+            
+            <div class="payment-info" id="paymentInfo">
+                <div class="section-title">Informasi Pembayaran</div>
+                <div class="total-fine">Rp 653.500,00</div>
+                
+                <div class="payment-code-container">
+                    <div class="payment-code" id="paymentCode">910266000000895870</div>
+                    <button class="copy-btn" id="copyBtn">Salin</button>
+                </div>
+            </div>
+            
+            <div class="countdown-container" id="countdownContainer">
+                <div class="countdown-title">Batas Waktu Pembayaran</div>
+                <div class="countdown-timer" id="countdown">02:00:00</div>
+            </div>
+            
+            <div class="expired" id="expiredMessage">
+                WAKTU PEMBAYARAN HABIS!<br>
+                Permohonan Anda telah ditolak oleh sistem.<br>
+                Silakan tunggu 3 bulan untuk melakukan pendaftaran kembali.
+            </div>
+            
+            <div class="requirements">
+                <div class="requirements-title">Persyaratan dan Ketentuan:</div>
+                <ul class="requirements-list">
+                    <li>Pemohon wajib hadir 15 menit sebelum jam kedatangan dimulai</li>
+                    <li>Membawa dokumen persyaratan permohonan paspor asli sesuai tujuan permohonan</li>
+                    <li>Membawa KTP asli dan fotokopi</li>
+                    <li>Membawa KK asli dan fotokopi</li>
+                    <li>Membawa paspor lama (jika ada)</li>
+                    <li>Apabila tidak hadir sesuai jadwal, permohonan dapat dibatalkan</li>
+                </ul>
+            </div>
+            
+            <div class="warning">
+                <div class="warning-title">Peringatan:</div>
+                <p>Apabila pembayaran dilakukan diluar batas waktu yang sudah ditentukan, maka permohonan akan otomatis ditolak oleh sistem dan Anda wajib menunggu 3 bulan mendatang untuk melakukan pendaftaran kembali.</p>
+            </div>
+            
+            <div class="security-note">
+                <div class="security-title">Catatan Keamanan:</div>
+                <p>Harap data diri dan kode permohonan jangan diberikan kepada siapapun untuk menjaga keamanan data Anda.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fungsi untuk menyalin kode pembayaran
+            const copyBtn = document.getElementById('copyBtn');
+            const paymentCode = document.getElementById('paymentCode');
+            
+            copyBtn.addEventListener('click', function() {
+                navigator.clipboard.writeText(paymentCode.textContent)
+                    .then(() => {
+                        const originalText = copyBtn.textContent;
+                        copyBtn.textContent = 'Tersalin!';
+                        copyBtn.style.backgroundColor = '#4caf50';
+                        copyBtn.style.color = 'white';
+                        
+                        setTimeout(() => {
+                            copyBtn.textContent = originalText;
+                            copyBtn.style.backgroundColor = '#ffd700';
+                            copyBtn.style.color = '#003366';
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        console.error('Gagal menyalin kode: ', err);
+                    });
+            });
+            
+            // Fungsi untuk membuka email client
+            const agencyEmail = document.getElementById('agencyEmail');
+            agencyEmail.addEventListener('click', function() {
+                window.location.href = 'mailto:agencyerik@jakarta.com';
+            });
+            
+            // Fungsi countdown timer
+            const countdownElement = document.getElementById('countdown');
+            const expiredMessage = document.getElementById('expiredMessage');
+            const paymentInfo = document.getElementById('paymentInfo');
+            const countdownContainer = document.getElementById('countdownContainer');
+            
+            // Durasi countdown dalam milidetik (2 jam)
+            const duration = 2 * 60 * 60 * 1000; // 2 jam dalam milidetik
+            
+            // Cek apakah sudah ada waktu tersimpan di localStorage
+            let startTime = localStorage.getItem('paymentStartTime');
+            let endTime = localStorage.getItem('paymentEndTime');
+            let currentTime = Date.now();
+            
+            // Jika belum ada startTime atau endTime, atau sudah expired, set baru
+            if (!startTime || !endTime || parseInt(endTime) <= currentTime) {
+                startTime = currentTime;
+                endTime = startTime + duration;
+                localStorage.setItem('paymentStartTime', startTime);
+                localStorage.setItem('paymentEndTime', endTime);
+                
+                // Reset tampilan jika sebelumnya expired
+                expiredMessage.style.display = 'none';
+                paymentInfo.style.opacity = '1';
+                paymentInfo.style.pointerEvents = 'auto';
+                countdownContainer.style.display = 'block';
+            }
+            
+            // Konversi ke integer
+            startTime = parseInt(startTime);
+            endTime = parseInt(endTime);
+            
+            function updateCountdown() {
+                currentTime = Date.now();
+                const remainingTime = endTime - currentTime;
+                
+                if (remainingTime <= 0) {
+                    // Waktu habis
+                    countdownElement.textContent = '00:00:00';
+                    expiredMessage.style.display = 'block';
+                    paymentInfo.style.opacity = '0.5';
+                    paymentInfo.style.pointerEvents = 'none';
+                    countdownContainer.style.display = 'none';
+                    return;
+                }
+                
+                // Menghitung jam, menit, dan detik
+                const hours = Math.floor(remainingTime / (1000 * 60 * 60));
+                const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+                
+                // Format tampilan timer
+                const formattedTime = 
+                    String(hours).padStart(2, '0') + ':' +
+                    String(minutes).padStart(2, '0') + ':' +
+                    String(seconds).padStart(2, '0');
+                
+                countdownElement.textContent = formattedTime;
+                
+                // Update setiap detik
+                setTimeout(updateCountdown, 1000);
+            }
+            
+            // Memulai countdown
+            updateCountdown();
+        });
+    </script>
+</body>
+</html>
