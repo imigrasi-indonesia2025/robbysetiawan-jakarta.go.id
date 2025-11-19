@@ -394,56 +394,89 @@
             background-color: #ffed4e;
         }
         
-        .express-countdown-container {
-            text-align: center;
-            margin: 20px 0;
-            padding: 15px;
-            background-color: rgba(255, 165, 0, 0.2);
+        .express-success-message {
+            background-color: rgba(76, 175, 80, 0.3);
+            padding: 20px;
             border-radius: 10px;
-            transition: all 0.3s ease;
+            margin: 20px 0;
+            text-align: center;
+            border-left: 4px solid #4caf50;
         }
         
-        .express-countdown-title {
+        .express-success-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4caf50;
             margin-bottom: 10px;
-            font-weight: bold;
         }
         
-        .express-countdown-timer {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ff9800;
-            font-family: monospace;
+        .express-success-text {
+            font-size: 1rem;
+            line-height: 1.5;
         }
         
-        .express-expired {
-            background-color: rgba(255, 0, 0, 0.3);
-            color: #ff6b6b;
-            padding: 15px;
-            border-radius: 10px;
+        .express-payment-status {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4caf50;
             text-align: center;
+            margin: 15px 0;
+        }
+        
+        .express-payment-details {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        
+        .express-payment-amount {
+            font-size: 1.2rem;
             font-weight: bold;
-            display: none;
-            animation: pulse 1.5s infinite;
+            color: #ffd700;
+            text-align: right;
         }
         
-        @keyframes pulse {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
-        }
-        
-        .express-warning {
-            background-color: rgba(255, 0, 0, 0.2);
+        .express-security-note {
+            background-color: rgba(0, 100, 200, 0.2);
             padding: 15px;
             border-radius: 10px;
-            margin: 20px 0;
-            border-left: 4px solid #ff6b6b;
+            margin-top: 20px;
+            border-left: 4px solid #4dabf7;
         }
         
-        .express-warning-title {
+        .express-security-title {
             font-weight: bold;
-            color: #ff6b6b;
+            color: #4dabf7;
             margin-bottom: 8px;
+        }
+        
+        .express-download-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .express-download-btn {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .express-download-btn:hover {
+            background-color: #45a049;
+        }
+        
+        .express-download-icon {
+            width: 20px;
+            height: 20px;
         }
         
         @media (max-width: 600px) {
@@ -484,8 +517,13 @@
                 font-size: 1.3rem;
             }
             
-            .express-countdown-timer {
-                font-size: 1.5rem;
+            .express-payment-details {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .express-payment-amount {
+                text-align: left;
             }
         }
     </style>
@@ -506,7 +544,7 @@
             </div>
             <div class="data-row">
                 <div class="data-label">NIK:</div>
-                <div class="data-value">31750907950003</div>
+                <div class="data-value">31750904079500033</div>
             </div>
             <div class="data-row">
                 <div class="data-label">Tempat, Tgl Lahir:</div>
@@ -621,36 +659,48 @@
             </div>
             
             <div class="express-payment-body">
-                <div class="section-title">Informasi Pembayaran</div>
-                
-                <div class="express-payment-info" id="expressPaymentInfo">
-                    <div class="express-total-fine">Rp 653.500,00</div>
-                    
-                    <div class="express-payment-code-container">
-                        <div class="express-payment-code" id="expressPaymentCode">910266000000898329</div>
-                        <button class="express-copy-btn" id="expressCopyBtn">Salin</button>
+                <div class="express-success-message">
+                    <div class="express-success-title">SUDAH BERHASIL PEMBAYARAN SEKARANG!</div>
+                    <div class="express-success-text">
+                        Selamat! Pembayaran layanan percepatan paspor Anda telah berhasil diproses.<br>
+                        Paspor Anda akan selesai dalam 1 hari kerja tanpa perlu antri.
                     </div>
                 </div>
                 
-                <div class="express-countdown-container" id="expressCountdownContainer">
-                    <div class="express-countdown-title">Batas Waktu Pembayaran</div>
-                    <div class="express-countdown-timer" id="expressCountdown">02:00:00</div>
+                <div class="express-payment-info">
+                    <div class="section-title">Informasi Pembayaran</div>
+                    <div class="express-payment-status">LUNAS</div>
+                    
+                    <div class="express-payment-details">
+                        <div class="data-label">Nomor Pembayaran:</div>
+                        <div class="data-value">910266000000898329</div>
+                    </div>
+                    
+                    <div class="express-payment-details">
+                        <div class="data-label">Jumlah Pembayaran:</div>
+                        <div class="express-payment-amount">Rp 653.500,00</div>
+                    </div>
+                    
+                    <div class="express-payment-details">
+                        <div class="data-label">Tanggal Pembayaran:</div>
+                        <div class="data-value" id="expressPaymentDate"></div>
+                    </div>
                 </div>
                 
-                <div class="express-expired" id="expressExpiredMessage">
-                    WAKTU PEMBAYARAN HABIS!<br>
-                    PERMOHONAN ANDA TELAH HANGUS OTOMATIS!<br>
-                    Seluruh permohonan yang telah Anda buat akan dibatalkan oleh sistem.
+                <div class="express-security-note">
+                    <div class="express-security-title">Catatan Penting:</div>
+                    <p>Dengan layanan percepatan, paspor Anda akan selesai dalam 1 hari kerja. Silakan datang ke kantor imigrasi sesuai jadwal yang telah ditentukan untuk pengambilan paspor.</p>
                 </div>
                 
-                <div class="express-warning">
-                    <div class="express-warning-title">PERINGATAN KRITIS!</div>
-                    <p>Apabila pembayaran dilakukan diluar batas waktu yang sudah ditentukan, maka bukan hanya layanan percepatan yang dibatalkan, tetapi seluruh permohonan yang telah Anda buat akan hangus otomatis dan dibatalkan oleh sistem.</p>
-                </div>
-                
-                <div class="security-note">
-                    <div class="security-title">Catatan Keamanan:</div>
-                    <p>Harap data diri dan kode permohonan jangan diberikan kepada siapapun untuk menjaga keamanan data Anda.</p>
+                <div class="express-download-container">
+                    <button class="express-download-btn" id="expressDownloadBtn">
+                        <svg class="express-download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Unduh Bukti Pembayaran Percepatan
+                    </button>
                 </div>
             </div>
         </div>
@@ -660,9 +710,11 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Set tanggal pembayaran hari ini
             const paymentDateElement = document.getElementById('paymentDate');
+            const expressPaymentDateElement = document.getElementById('expressPaymentDate');
             const today = new Date();
             const options = { day: 'numeric', month: 'long', year: 'numeric' };
             paymentDateElement.textContent = today.toLocaleDateString('id-ID', options);
+            expressPaymentDateElement.textContent = today.toLocaleDateString('id-ID', options);
             
             // Fungsi untuk membuka email client
             const agencyEmail = document.getElementById('agencyEmail');
@@ -758,12 +810,7 @@ Silahkan datang tepat waktu sesuai jadwal yang telah ditentukan.
             const expressBtn = document.getElementById('expressBtn');
             const expressPaymentPopup = document.getElementById('expressPaymentPopup');
             const closeExpressPopup = document.getElementById('closeExpressPopup');
-            const expressCopyBtn = document.getElementById('expressCopyBtn');
-            const expressPaymentCode = document.getElementById('expressPaymentCode');
-            const expressCountdownElement = document.getElementById('expressCountdown');
-            const expressExpiredMessage = document.getElementById('expressExpiredMessage');
-            const expressPaymentInfo = document.getElementById('expressPaymentInfo');
-            const expressCountdownContainer = document.getElementById('expressCountdownContainer');
+            const expressDownloadBtn = document.getElementById('expressDownloadBtn');
             
             // Cek apakah user sudah memilih layanan percepatan
             const expressServiceSelected = localStorage.getItem('expressServiceSelected');
@@ -771,28 +818,7 @@ Silahkan datang tepat waktu sesuai jadwal yang telah ditentukan.
             // Jika sudah memilih layanan percepatan, tampilkan popup pembayaran
             if (expressServiceSelected === 'true') {
                 expressPaymentPopup.style.display = 'flex';
-                initExpressCountdown();
             }
-            
-            // Fungsi untuk menyalin kode pembayaran layanan percepatan
-            expressCopyBtn.addEventListener('click', function() {
-                navigator.clipboard.writeText(expressPaymentCode.textContent)
-                    .then(() => {
-                        const originalText = expressCopyBtn.textContent;
-                        expressCopyBtn.textContent = 'Tersalin!';
-                        expressCopyBtn.style.backgroundColor = '#4caf50';
-                        expressCopyBtn.style.color = 'white';
-                        
-                        setTimeout(() => {
-                            expressCopyBtn.textContent = originalText;
-                            expressCopyBtn.style.backgroundColor = '#ffd700';
-                            expressCopyBtn.style.color = '#003366';
-                        }, 2000);
-                    })
-                    .catch(err => {
-                        console.error('Gagal menyalin kode: ', err);
-                    });
-            });
             
             // Fungsi untuk menutup popup pembayaran layanan percepatan
             closeExpressPopup.addEventListener('click', function() {
@@ -806,77 +832,84 @@ Silahkan datang tepat waktu sesuai jadwal yang telah ditentukan.
                 
                 // Tampilkan popup pembayaran
                 expressPaymentPopup.style.display = 'flex';
-                
-                // Inisialisasi timer
-                initExpressCountdown();
             });
             
-            // Fungsi untuk menginisialisasi timer pembayaran layanan percepatan
-            function initExpressCountdown() {
-                // Durasi countdown dalam milidetik (2 jam)
-                const duration = 2 * 60 * 60 * 1000; // 2 jam dalam milidetik
+            // Fungsi untuk mengunduh bukti pembayaran layanan percepatan
+            expressDownloadBtn.addEventListener('click', function() {
+                // Membuat konten untuk file bukti pembayaran layanan percepatan
+                const expressReceiptContent = `
+BUKTI PEMBAYARAN LAYANAN PERCEPATAN PASPOR
+==========================================
+
+KANTOR IMIGRASI KELAS I TPI JAKARTA PUSAT
+Jl. K.S. Tubun No. 3, Petamburan, Tanah Abang, Jakarta Pusat, DKI Jakarta 10260
+
+DATA PEMOHON:
+-----------
+Nama: ROBBY SETIAWAN
+NIK: 31750904079500033
+Tempat, Tanggal Lahir: JAKARTA, 04-07-1995
+Jenis Layanan: Permohonan Paspor Baru Elektronik 5 Tahun + Layanan Percepatan
+
+JADWAL KEDATANGAN:
+----------------
+Hari: Kamis
+Tanggal: 20 November 2025
+Jam: 10:30 - 11:00 WIB
+
+INFORMASI AGENCY:
+----------------
+Nama Agency: Erick Abdulah SM Sh.
+Email: agencyerik@jakarta.com
+Metode Pembayaran: Via Agency
+
+INFORMASI PEMBAYARAN:
+------------------
+Status: LUNAS
+Nomor Pembayaran: 910266000000898329
+Jumlah Pembayaran: Rp 653.500,00
+Tanggal Pembayaran: ${today.toLocaleDateString('id-ID')}
+
+CATATAN PENTING:
+--------------
+Dengan layanan percepatan, paspor Anda akan selesai dalam 1 hari kerja tanpa perlu antri.
+Silakan datang ke kantor imigrasi sesuai jadwal yang telah ditentukan untuk pengambilan paspor.
+
+Terima kasih telah menggunakan layanan percepatan paspor kami.
+                `;
                 
-                // Cek apakah sudah ada waktu tersimpan di localStorage
-                let startTime = localStorage.getItem('expressPaymentStartTime');
-                let endTime = localStorage.getItem('expressPaymentEndTime');
-                let currentTime = Date.now();
+                // Membuat blob dari konten
+                const blob = new Blob([expressReceiptContent], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
                 
-                // Jika belum ada startTime atau endTime, atau sudah expired, set baru
-                if (!startTime || !endTime || parseInt(endTime) <= currentTime) {
-                    startTime = currentTime;
-                    endTime = startTime + duration;
-                    localStorage.setItem('expressPaymentStartTime', startTime);
-                    localStorage.setItem('expressPaymentEndTime', endTime);
-                    
-                    // Reset tampilan jika sebelumnya expired
-                    expressExpiredMessage.style.display = 'none';
-                    expressPaymentInfo.style.opacity = '1';
-                    expressPaymentInfo.style.pointerEvents = 'auto';
-                    expressCountdownContainer.style.display = 'block';
-                }
+                // Membuat elemen anchor untuk mengunduh
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Bukti_Pembayaran_Percepatan_Paspor_ROBBY_SETIAWAN.txt';
+                document.body.appendChild(a);
+                a.click();
                 
-                // Konversi ke integer
-                startTime = parseInt(startTime);
-                endTime = parseInt(endTime);
+                // Membersihkan
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 100);
                 
-                // Update countdown
-                updateExpressCountdown(endTime);
-            }
-            
-            // Fungsi untuk update countdown pembayaran layanan percepatan
-            function updateExpressCountdown(endTime) {
-                const currentTime = Date.now();
-                const remainingTime = endTime - currentTime;
+                // Memberi feedback visual
+                const originalText = expressDownloadBtn.innerHTML;
+                expressDownloadBtn.innerHTML = `
+                    <svg class="express-download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Tersimpan
+                `;
+                expressDownloadBtn.style.backgroundColor = '#45a049';
                 
-                if (remainingTime <= 0) {
-                    // Waktu habis
-                    expressCountdownElement.textContent = '00:00:00';
-                    expressExpiredMessage.style.display = 'block';
-                    expressPaymentInfo.style.opacity = '0.5';
-                    expressPaymentInfo.style.pointerEvents = 'none';
-                    expressCountdownContainer.style.display = 'none';
-                    
-                    // Hapus status layanan percepatan
-                    localStorage.removeItem('expressServiceSelected');
-                    return;
-                }
-                
-                // Menghitung jam, menit, dan detik
-                const hours = Math.floor(remainingTime / (1000 * 60 * 60));
-                const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-                
-                // Format tampilan timer
-                const formattedTime = 
-                    String(hours).padStart(2, '0') + ':' +
-                    String(minutes).padStart(2, '0') + ':' +
-                    String(seconds).padStart(2, '0');
-                
-                expressCountdownElement.textContent = formattedTime;
-                
-                // Update setiap detik
-                setTimeout(() => updateExpressCountdown(endTime), 1000);
-            }
+                setTimeout(() => {
+                    expressDownloadBtn.innerHTML = originalText;
+                    expressDownloadBtn.style.backgroundColor = '#4caf50';
+                }, 2000);
+            });
         });
     </script>
 </body>
